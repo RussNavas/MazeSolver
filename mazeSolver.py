@@ -1,30 +1,18 @@
 from window import Window
-from cell import Cell
+from maze import Maze
 
 
 def main():
 
     win = Window(800, 600)
 
-    # Create some cells
-    cell1 = Cell(win)
-    cell1.draw(50, 150, 50, 150)
+    # Create a 3x3 grid of cells for testing
+    print("Drawing a 3x3 Maze...")
+    maze = Maze(50, 50, 3, 3, 100, 100, win)
 
-    cell2 = Cell(win)
-    cell2.draw(200, 300, 50, 150)
-
-    cell3 = Cell(win)
-    cell3.draw(50, 150, 200, 300)
-
-    cell4 = Cell(win)
-    cell4.draw(200, 300, 200, 300)
-
-    # Draw moves between cells
-    cell1.draw_move(cell2)  # Red line to the right
-    cell1.draw_move(cell3)  # Red line downward
-
-    # Draw a backtrack move
-    cell2.draw_move(cell4, undo=True)  # Gray line downward
+    # Create a larger grid to test further
+    print("Drawing a 10x5 Maze...")
+    maze_large = Maze(400, 50, 5, 10, 50, 50, win)
 
     win.wait_for_close()
 
